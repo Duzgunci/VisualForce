@@ -1,0 +1,45 @@
+---------****** CUSTOM CONTROLLER APEX CLASS ******----------
+
+public class GetterSetter {
+
+    public string fname {set; get;}
+    public string lname {set; get;}
+    public string city {set; get;}
+    public string fullname {set; get;}
+    
+    public GetterSetter(){
+        
+        fname = 'Kenny';
+        lname = 'Rain';
+        city = 'Virginia Beach';
+    }
+    
+    public PageReference concatanate(){
+        
+        fullname = fname + ' ' +lname;
+        return null;
+    }
+}
+
+---------****** CALLING VF PAGE ******----------
+
+<apex:page controller="GetterSetter" >
+    <apex:pageBlock title="Person Information">
+    	<apex:form>
+            First Name: <apex:inputText value="{!fname}" styleClass="myStyle" /> <br/><br/>
+            Last Name: <apex:inputText value="{!lname}" styleClass="myStyle" /> <br/><br/>
+            City: <apex:inputText value="{!city}" styleClass="myStyle" /> <br/><br/>
+            
+            <apex:commandButton action="{!concatanate}" value="Merge" />
+            
+            <apex:outputText value="{!fullname}" styleClass="myStyle" style="color:red"></apex:outputText>
+        </apex:form>
+        
+        <style>
+        	.myStyle{
+            	position :absolute;
+            	left: 100px;
+            }
+        </style>
+    </apex:pageBlock>
+</apex:page>
