@@ -1,0 +1,7 @@
+<apex:page >
+    
+   <apex:pageBlock>
+       <apex:iframe src ="https://relatedwords.org"/>
+    </apex:pageBlock>
+</apex:page>
+
