@@ -1,0 +1,43 @@
+----------**********First Class:**********-----------------
+
+public class FirstExtension {
+	public Account acc;
+    
+    public FirstExtension(ApexPages.StandardController controller){
+       acc = (Account) controller.getRecord();
+        
+    }
+    public string greeting;
+    
+    public string getGreeting(){
+        greeting = 'Hello '+ acc.Name + '!';
+        return greeting;
+    }
+}
+
+----------**********Second Class:**********-----------------
+
+public class SecondExtension {
+    public SecondExtension (ApexPages.StandardController controller){
+       
+    }
+
+    public Date getDate(){
+        return Date.today();
+    }
+}
+
+----------**********VF Page:**********-----------------
+
+<apex:page standardController="Account" extensions = "FirstExtension,SecondExtension">
+    <apex:PageBlock title="Combined Controllers">
+        <apex:outputField value ="{!Account.Name}"/>
+        <br/>
+        <br/>
+        <apex:outputText value ="{!greeting}"></apex:outputText>
+        <br/>
+        <br/>
+        Today's Date: &nbsp; <apex:outputText value="{!Date}"></apex:outputText>
+    </apex:PageBlock>
+    
+</apex:page>
