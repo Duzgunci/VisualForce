@@ -1,0 +1,23 @@
+---------******APEX CLASS *****--------------
+
+public class CustomConroller {
+    
+    public Account getAccount(){
+        
+        return [SELECT Id, Name, Industry FROM Account WHERE Id=:ApexPages.currentPage().getParameters().get('Id')];
+    }
+
+}
+
+---------******CALLING VF PAGE *****--------------
+
+<apex:page controller="CustomConroller" >
+    <apex:pageBlock title="Custom Controller">
+      <apex:form>  
+          <apex:outputField value="{!Account.Name}"/><br/><br/>
+    	<apex:outputField value="{!Account.Industry}"/>
+      </apex:form>
+    </apex:pageBlock>
+</apex:page>
+
+
