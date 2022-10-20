@@ -1,0 +1,16 @@
+<apex:page >
+  <h1>Please fill out form  </h1>
+  <apex:form >
+      Name: <apex:inputText /><br/>
+      Phone: <apex:inputText /><br/>
+      Address: <apex:inputTextarea /><br/>
+      Check : <apex:inputCheckbox /><br/>
+      Upload File: <apex:inputFile value=""></apex:inputFile><br/>
+      Password: <apex:inputSecret /><br/>
+      
+      <apex:outputText >This is output text </apex:outputText><br/>
+      
+      <apex:outputLink value="https://google.com"> Google </apex:outputLink>
+  
+  </apex:form>
+</apex:page>
