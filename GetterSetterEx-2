@@ -1,0 +1,48 @@
+
+---------******APEX CLASS *****--------------------
+public class NewCusController {   
+    public Account acc {set; get;}
+    
+    public NewCusController() {
+	Id accId = ApexPages.currentPage().getParameters().get('id');
+        
+        if(accId == null){
+            
+            acc = new Account();
+        }
+        else {
+            
+            acc =[SELECT Name, Phone, Industry FROM Account WHERE Id =:accId];
+        }
+    }
+
+    public PageReference save(){        
+        upsert acc;
+        return null;
+    }
+}
+
+---------******CALLING VF PAGE *****--------------------
+<apex:page  controller = "NewCusController">
+    <apex:form>
+     <apex:PageBlock title = "Account Component">
+        
+        <apex:pageBlockSection columns ="1">
+         <apex:inputField value="{!acc.Name}"></apex:inputField>
+         <apex:inputField value="{!acc.Phone}"></apex:inputField>
+         <apex:inputField value="{!acc.Industry}"></apex:inputField>
+        </apex:pageBlockSection>
+         <apex:PageBlockButtons location="bottom">
+         
+         <apex:commandButton value="Save" action="{!save}"></apex:commandButton>
+             
+             
+         </apex:PageBlockButtons>
+        
+        </apex:PageBlock>
+    
+    </apex:form>
+</apex:page>
+
+
+
